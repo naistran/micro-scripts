@@ -1,0 +1,28 @@
+{
+  "name": "micro-scripts",
+  "version": "0.0.1",
+  "description": "Configuration and scripts a Node.js microservice",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-transform-object-rest-spread": "6.16.0",
+    "babel-preset-env": "^0.0.9",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-1": "^6.16.0",
+    "babel-watch": "^2.0.4",
+    "cross-spawn": "^5.0.1",
+    "dotenv": "^2.0.0",
+    "flow-copy-source": "^1.1.0",
+    "micro": "^6.1.0",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.11.1",
+    "eslint-config-react-app": "^0.3.0",
+    "eslint-plugin-flowtype": "^2.28.2",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.1",
+    "eslint-plugin-react": "^6.7.1"
+  }
+}

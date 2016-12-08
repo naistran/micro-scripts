@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+
+const spawn = require('cross-spawn');
+
+const defaultCommand = 'dev';
+const commands = new Set([
+  defaultCommand,
+  'build',
+  'start',
+]);
+
+let cmd = process.argv[2];
+let args;
+
+if (commands.has(cmd)) {
+  args = process.argv.slice(3);
+} else {
+  cmd = defaultCommand;
+  args = process.argv.slice(2);
+}
+
+const proc = spawn(
+  cmd === 'dev'
+    ? require.resolve('../node_modules/.bin/babel-watch')
+    : 'node',
+  [
+    ...cmd === 'dev'
+      ? ['--presets', require.resolve('../utils/babelPreset')]
+      : [],
+    require.resolve(`../scripts/${cmd}`),
+    ...args,
+  ],
+  { stdio: 'inherit' }
+);
+proc.on('close', (code) => process.exit(code));
+proc.on('error', (err) => {
+  console.error(err);
+  process.exit(1);
+});

@@ -1,0 +1,14 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "semi": ["warn", "always"],
+    "no-extra-semi": "warn",
+    "flowtype/space-after-type-colon": ["warn", "always"],
+    "flowtype/space-before-type-colon": ["warn", "never"],
+    "flowtype/space-before-generic-bracket": ["warn", "never"],
+    "flowtype/union-intersection-spacing": ["warn", "always"],
+    "flowtype/define-flow-type": "warn",
+    "flowtype/use-flow-type": "warn",
+    "flowtype/semi": "warn",
+  }
+}
