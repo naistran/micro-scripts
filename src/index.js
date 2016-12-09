@@ -1,7 +1,7 @@
 // @flow
 
-import type { ClientRequest, ServerResponse } from 'http';
+import type { IncomingMessage, ServerResponse } from 'http';
 
-export default async (req: ClientRequest, res: ServerResponse) => {
+export default async (req: IncomingMessage, res: ServerResponse) => {
   res.end('Hello, world.');
 };

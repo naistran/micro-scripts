@@ -37,12 +37,12 @@ module.exports = function run(cmd) {
     file = resolve(process.cwd(), file);
   }
 
-  let mod;
+  let srv;
 
   try {
-    mod = require(file);
-    if (mod && 'object' === typeof mod) {
-      mod = mod.default;
+    srv = require(file);
+    if (srv && 'object' === typeof srv) {
+      srv = srv.default;
     }
   } catch (err) {
     console.error(`micro: Error when importing ${file}: ${err.stack}`);
@@ -51,10 +51,8 @@ module.exports = function run(cmd) {
 
   const { host, port } = args;
 
-  let srv;
-
-  if ('function' === typeof mod) {
-    srv = micro(mod);
+  if ('function' === typeof srv) {
+    srv = micro(srv);
   }
 
   if (!srv.listen) {
