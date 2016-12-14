@@ -1,6 +1,6 @@
 {
   "name": "micro-scripts",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Configuration and scripts a Node.js microservice",
   "license": "MIT",
   "bin": {
