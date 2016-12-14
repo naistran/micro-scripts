@@ -20,7 +20,7 @@ module.exports = function run(cmd) {
   if (!file) {
     try {
       const packageJson = require(resolve(process.cwd(), 'package.json'));
-      file = packageJson.main || cmd === 'dev' ? 'src/index.js' : 'index.js';
+      file = packageJson.main || cmd === 'dev' ? 'src/index.js' : 'dist/index.js';
     } catch (err) {
       if ('MODULE_NOT_FOUND' !== err.code) {
         console.error(`micro-scripts: Could not read \`package.json\`: ${err.message}`);
@@ -49,8 +49,6 @@ module.exports = function run(cmd) {
     process.exit(1);
   }
 
-  const { host, port } = args;
-
   if ('function' === typeof srv) {
     srv = micro(srv);
   }
@@ -60,11 +58,17 @@ module.exports = function run(cmd) {
     process.exit(1);
   }
 
-  srv.listen(port, host, err => {
-    if (err) {
-      console.error('micro-scripts:', err.stack);
-      process.exit(1);
-    }
-    console.log(`Listening on http://${host}:${port}`);
-  });
+  let startServer;
+
+  try {
+    startServer = require(
+      cmd === 'dev'
+        ? resolve(__dirname, './startServer')
+        : resolve(process.cwd(), 'dist/startServer')
+    );
+  } catch (err) {
+
+  }
+
+  startServer(srv, args);
 };

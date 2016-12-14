@@ -1,10 +1,8 @@
 const { resolve } = require('path');
 const spawn = require('cross-spawn');
 
-let [,, source, target] = process.argv;
-
-source = resolve(process.cwd(), source || 'src');
-target = resolve(process.cwd(), target || 'dist');
+const source = resolve(process.cwd(), 'src');
+const target = resolve(process.cwd(), 'dist');
 
 spawn.sync(
   require.resolve('../node_modules/.bin/babel'),
@@ -21,29 +19,43 @@ spawn.sync(
 );
 
 spawn.sync(
-  'cp',
+  require.resolve('../node_modules/.bin/babel'),
   [
-    resolve(process.cwd(), 'package.json'),
-    target + '/',
+    resolve(__dirname, '..', 'utils/startServer.js'),
+    '--presets',
+    require.resolve('../utils/babelPreset'),
+    '--ignore',
+    '__tests__',
+    '--out-file',
+    resolve(target, 'startServer.js'),
   ],
   { stdio: 'inherit' }
 );
 
-spawn.sync(
-  'cp',
-  [
-    resolve(process.cwd(), 'README.md'),
-    target + '/',
-  ],
-  { stdio: 'inherit' }
-);
-
-spawn.sync(
-  require.resolve('../node_modules/.bin/flow-copy-source'),
-  [
-    '-v',
-    source,
-    target,
-  ],
-  { stdio: 'inherit' }
-);
+// spawn.sync(
+//   'cp',
+//   [
+//     resolve(process.cwd(), 'package.json'),
+//     target + '/',
+//   ],
+//   { stdio: 'inherit' }
+// );
+//
+// spawn.sync(
+//   'cp',
+//   [
+//     resolve(process.cwd(), 'README.md'),
+//     target + '/',
+//   ],
+//   { stdio: 'inherit' }
+// );
+//
+// spawn.sync(
+//   require.resolve('../node_modules/.bin/flow-copy-source'),
+//   [
+//     '-v',
+//     source,
+//     target,
+//   ],
+//   { stdio: 'inherit' }
+// );

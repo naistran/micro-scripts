@@ -1,4 +1,3 @@
-
 module.exports = function preset() {
   return {
     presets: [
@@ -6,6 +5,7 @@ module.exports = function preset() {
         targets: {
           node: 'current',
         },
+        useBuiltIns: true,
       }],
       require.resolve('babel-preset-stage-1'),
       require.resolve('babel-preset-react'),
