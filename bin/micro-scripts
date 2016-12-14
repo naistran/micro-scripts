@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const spawn = require('cross-spawn');
+const npmRun = require('npm-run');
 
 const defaultCommand = 'dev';
 const commands = new Set([
@@ -19,9 +19,9 @@ if (commands.has(cmd)) {
   args = process.argv.slice(2);
 }
 
-const proc = spawn(
+const proc = npmRun.spawn(
   cmd === 'dev'
-    ? require.resolve('../node_modules/.bin/babel-watch')
+    ? 'babel-watch'
     : 'node',
   [
     ...cmd === 'dev'

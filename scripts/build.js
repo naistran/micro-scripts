@@ -5,7 +5,7 @@ const source = resolve(process.cwd(), 'src');
 const target = resolve(process.cwd(), 'dist');
 
 npmRun.spawnSync(
-  require.resolve('../node_modules/.bin/babel'),
+  'babel',
   [
     source,
     '--presets',
@@ -19,7 +19,7 @@ npmRun.spawnSync(
 );
 
 npmRun.spawnSync(
-  require.resolve('../node_modules/.bin/babel'),
+  'babel',
   [
     resolve(__dirname, '..', 'utils/startServer.js'),
     '--presets',
