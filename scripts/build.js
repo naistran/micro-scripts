@@ -1,10 +1,10 @@
 const { resolve } = require('path');
-const spawn = require('cross-spawn');
+const npmRun = require('npm-run');
 
 const source = resolve(process.cwd(), 'src');
 const target = resolve(process.cwd(), 'dist');
 
-spawn.sync(
+npmRun.spawnSync(
   require.resolve('../node_modules/.bin/babel'),
   [
     source,
@@ -18,7 +18,7 @@ spawn.sync(
   { stdio: 'inherit' }
 );
 
-spawn.sync(
+npmRun.spawnSync(
   require.resolve('../node_modules/.bin/babel'),
   [
     resolve(__dirname, '..', 'utils/startServer.js'),
@@ -32,7 +32,7 @@ spawn.sync(
   { stdio: 'inherit' }
 );
 
-// spawn.sync(
+// npmRun.spawnSync(
 //   'cp',
 //   [
 //     resolve(process.cwd(), 'package.json'),
@@ -41,7 +41,7 @@ spawn.sync(
 //   { stdio: 'inherit' }
 // );
 //
-// spawn.sync(
+// npmRun.spawnSync(
 //   'cp',
 //   [
 //     resolve(process.cwd(), 'README.md'),
@@ -50,7 +50,7 @@ spawn.sync(
 //   { stdio: 'inherit' }
 // );
 //
-// spawn.sync(
+// npmRun.spawnSync(
 //   require.resolve('../node_modules/.bin/flow-copy-source'),
 //   [
 //     '-v',
