@@ -15,21 +15,19 @@ npmRun.spawnSync(
     '--out-dir',
     target + '/',
   ],
-  { stdio: 'inherit' }
+  { stdio: 'inherit', cwd: resolve(__dirname, '..') }
 );
 
 npmRun.spawnSync(
   'babel',
   [
-    resolve(__dirname, '..', 'utils/startServer.js'),
+    resolve(__dirname, '../utils/startServer.js'),
     '--presets',
     require.resolve('../utils/babelPreset'),
-    '--ignore',
-    '__tests__',
     '--out-file',
     resolve(target, 'startServer.js'),
   ],
-  { stdio: 'inherit' }
+  { stdio: 'inherit', cwd: resolve(__dirname, '..') }
 );
 
 // npmRun.spawnSync(
