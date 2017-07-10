@@ -13,7 +13,7 @@
     "babel-preset-env": "^1.0.2",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-1": "^6.16.0",
-    "babel-watch": "^2.0.4",
+    "babel-watch": "^2.0.7",
     "dotenv": "^2.0.0",
     "flow-copy-source": "^1.1.0",
     "micro": "^6.1.0",
