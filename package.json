@@ -16,7 +16,7 @@
     "babel-watch": "^2.0.4",
     "dotenv": "^2.0.0",
     "flow-copy-source": "^1.1.0",
-    "micro": "^6.1.0",
+    "micro": "^9.3.2",
     "minimist": "^1.2.0",
     "npm-run": "^4.1.0"
   },
